@@ -1,0 +1,7 @@
+{
+  "name": "Theia IDE",
+  "description": "Eclipse Theia IDE browser product and cloud development environment",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

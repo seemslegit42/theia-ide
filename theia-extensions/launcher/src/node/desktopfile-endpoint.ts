@@ -10,7 +10,6 @@
 import { BackendApplicationContribution } from '@theia/core/lib/node/backend-application';
 import { Application, Router } from '@theia/core/shared/express';
 import { inject, injectable } from '@theia/core/shared/inversify';
-import { Request, Response } from 'express-serve-static-core';
 import { json } from 'body-parser';
 import { EnvVariablesServer } from '@theia/core/lib/common/env-variables';
 import { getStorageFilePath } from './launcher-util';
@@ -42,7 +41,7 @@ export class TheiaDesktopFileServiceEndpoint implements BackendApplicationContri
         app.use(TheiaDesktopFileServiceEndpoint.PATH, router);
     }
 
-    protected async getState(request: Request, response: Response): Promise<void> {
+    protected async getState(request: any, response: any): Promise<void> {
         const applicationName = request.query.applicationName;
         const uriScheme = request.query.uriScheme;
         if (typeof applicationName !== 'string' || typeof uriScheme !== 'string') {
@@ -86,7 +85,7 @@ export class TheiaDesktopFileServiceEndpoint implements BackendApplicationContri
         }
     }
 
-    protected async createOrUpdateDesktopfile(request: Request, response: Response): Promise<void> {
+    protected async createOrUpdateDesktopfile(request: any, response: any): Promise<void> {
         const { applicationName, uriScheme } = request.body;
         if (typeof applicationName !== 'string' || typeof uriScheme !== 'string') {
             response.status(400).json({ error: 'applicationName and uriScheme are required' });
